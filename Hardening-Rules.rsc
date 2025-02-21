@@ -100,6 +100,7 @@
 
   :log warning message="Management Services Secured";
 }
+/ip ssh regenerate-host-key;
 }
 # =======================================================
 

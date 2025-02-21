@@ -87,6 +87,7 @@ Turn off unnecessary services (e.g., FTP, Telnet, Winbox, API) and change defaul
   set www disabled=yes
   set www-ssl disabled=yes
 
+/ip ssh regenerate-host-key;
 /ip dns set allow-remote-requests=no;
 /tool bandwidth-server set enabled=no;
 /ip cloud set ddns-enabled=no update-time=no;
