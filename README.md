@@ -35,7 +35,7 @@ MikroTik RouterOS is a powerful and versatile operating system used in networkin
 ### Update RouterOS
 Ensure your MikroTik device is running the latest stable version of RouterOS to patch known vulnerabilities.
 
-```bash
+```console
 /system package update download;
 /system reboot;
 ```
