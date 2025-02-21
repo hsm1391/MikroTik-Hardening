@@ -2,6 +2,9 @@
 
 This document provides a comprehensive set of best practices to secure your MikroTik RouterOS devices. By following these guidelines, you can significantly reduce the attack surface, protect against common vulnerabilities, and ensure a secure network environment.
 
+__You can use the automated script to apply all changes, edit predefined values and paste it into terminal.__
+[Hardening-Rules.rsc](https://github.com/hsm1391/MikroTik-Hardening/blob/main/Hardening-Rules.rsc)
+
 ---
 
 ## Table of Contents
