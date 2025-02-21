@@ -122,6 +122,7 @@ Disable unused VPN servers to minimize exposure.
 /interface pppoe-server set disabled=yes [find];
 /ip proxy set enabled=no
 /ip socks set enabled=no
+/ip ssh set forwarding-enabled=no
 ```
 
 ---
