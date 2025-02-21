@@ -56,8 +56,8 @@ Create WAN and LAN interface lists to be used in firewall rules and other config
 ```bash
 /interface list add name=LAN
 /interface list add name=WAN
-/interface list member add disabled=no list=LAN interface=YourLanInterface
-/interface list member add disabled=no list=WAN interface=YourWanInterface
+/interface list member add disabled=no list=LAN interface=YourLanInterface;
+/interface list member add disabled=no list=WAN interface=YourWanInterface;
 ```
 
 ---
@@ -67,7 +67,7 @@ Create WAN and LAN interface lists to be used in firewall rules and other config
 Replace the default username (admin) and password with a strong, unique password.
 
 ```bash
-/user add name="YourUserName" password="YourStrongPassword" disabled=no group=full
+/user add name="YourUserName" password="YourStrongPassword" disabled=no group=full;
 ```
 
 ---
@@ -95,7 +95,7 @@ Turn off unnecessary services (e.g., FTP, Telnet, Winbox, API) and change defaul
 Restrict Winbox access to specific IP addresses or MAC addresses and use a non-default port.
 
 ```bash
-/ip service set winbox disabled=no port=YourWinboxPort address=YourNetworkAddress
+/ip service set winbox disabled=no port=YourWinboxPort address=YourNetworkAddress;
 ```
 
 ---
@@ -121,7 +121,7 @@ Turn off unused physical and virtual interfaces to prevent unauthorized access.
 You can also turn off lcd for added security.
 
 ```bash
-/lcd set enabled=no
+/lcd set enabled=no;
 ```
 
 ---
@@ -136,9 +136,9 @@ Disable unused VPN servers to minimize exposure.
 /interface sstp-server set disabled=yes;
 /interface ovpn-server set disabled=yes;
 /interface pppoe-server set disabled=yes [find];
-/ip proxy set enabled=no
-/ip socks set enabled=no
-/ip ssh set forwarding-enabled=no
+/ip proxy set enabled=no;
+/ip socks set enabled=no;
+/ip ssh set forwarding-enabled=no;
 ```
 
 ---
@@ -148,8 +148,8 @@ Disable unused VPN servers to minimize exposure.
 Restrict Wireless network access to known MAC addresses for added security.
 
 ```bash
-/add action=accept disabled=no mac-address=YourDeviceMacAddress mac-address-mask=FF:FF:FF:FF:FF:FF
-/interface wifi access-list add action=reject disabled=no
+/add action=accept disabled=no mac-address=YourDeviceMacAddress mac-address-mask=FF:FF:FF:FF:FF:FF;
+/interface wifi access-list add action=reject disabled=no;
 ```
  
 ---
@@ -159,7 +159,7 @@ Restrict Wireless network access to known MAC addresses for added security.
 Turn off Universal Plug and Play (UPnP) to prevent unauthorized port forwarding.
  
 ```bash
-/ip upnp set enabled=no
+/ip upnp set enabled=no;
 ```
 
 ---
@@ -169,8 +169,8 @@ Turn off Universal Plug and Play (UPnP) to prevent unauthorized port forwarding.
 Schedule regular backups of the configuration and store them securely.
 
 ```bash
-/system backup save name=YourDeviceIdentity
-/export file=YourDeviceIdentity
+/system backup save name=YourDeviceIdentity;
+/export file=YourDeviceIdentity;
 ```
 
 ---
@@ -180,7 +180,7 @@ Schedule regular backups of the configuration and store them securely.
 Regularly review logs, firewall rules, and user activity for signs of suspicious behavior.
 
 ```bash
-/log print 
+/log print;
 ```
 
 ---
