@@ -152,6 +152,11 @@ Turn off Universal Plug and Play (UPnP) to prevent unauthorized port forwarding.
 
 Schedule regular backups of the configuration and store them securely.
 
+```bash
+/system backup save name=YourDeviceIdentity
+/export file=YourDeviceIdentity
+```
+
 ---
 
 ### Monitor and Audit
