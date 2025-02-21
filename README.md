@@ -52,11 +52,27 @@ When device booted make sure to update the firmware with this command
 
 Replace the default username (admin) and password with a strong, unique password.
 
+```bash
+/user add name="YourUserName" password="YourStrongPassword" disabled=no group=full
+```
+
 ---
 
 ### Disable Unused Services
 
-Turn off unnecessary services (e.g., FTP, Telnet, Winbox, API) to reduce the attack surface.  
+Turn off unnecessary services (e.g., FTP, Telnet, Winbox, API) and change default port number associated to them to reduce the attack surface.
+
+```bash
+/ip service
+  set api disabled=yes
+  set api-ssl disabled=yes
+  set ftp disabled=yes
+  set ssh disabled=yes
+  set telnet disabled=yes
+  set winbox disabled=no port=YourWinboxPort
+  set www disabled=yes
+  set www-ssl disabled=yes
+```
 
 ---
 
@@ -64,11 +80,18 @@ Turn off unnecessary services (e.g., FTP, Telnet, Winbox, API) to reduce the att
 
 Restrict Winbox access to specific IP addresses or MAC addresses and use a non-default port.
 
+```bash
+/ip service set winbox disabled=no port=YourWinboxPort address=YourNetworkAddress
+```
+
 ---
 
 ### Enable Firewall
 
 Configure a robust firewall to block unauthorized access, including dropping invalid connections and limiting access to management interfaces.
+You can use my advanced mikrotik firewall from the link below:
+
+[Advanced-MikroTik-Firewall](https://github.com/hsm1391/Advanced-MikroTik-Firewall)
 
 ---
 

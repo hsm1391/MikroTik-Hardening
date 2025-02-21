@@ -74,10 +74,10 @@
   set api address="" disabled=yes port=8728
   set api-ssl address="" disabled=yes port=8729
   set ftp address="" disabled=yes port=21
-  set ssh  address="" disabled=no port=$SSHPort
+  set ssh address="" disabled=no port=$SSHPort
   set telnet address="" disabled=yes port=23
   set winbox address="" disabled=no port=$WinboxPort
-  set www  address="" disabled=yes port=80
+  set www address="" disabled=yes port=80
   set www-ssl address="" disabled=yes port=443
 
   :log warning message="Management Services Secured"
