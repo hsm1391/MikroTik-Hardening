@@ -14,7 +14,7 @@
 # - [2-21-2025]: [Release date]
 # =======================================================
 # Future Work:
-# [To be planned]
+# [Disable VPN Services]
 # =======================================================
 # Contact Information:
 # - Author Email: [hsm1391business@gmail.com]
