@@ -14,7 +14,7 @@
 # - [2-21-2025]: [Release date]
 # =======================================================
 # Future Work:
-# [Disable VPN Services]
+# [To be planned]
 # =======================================================
 # Contact Information:
 # - Author Email: [hsm1391business@gmail.com]
@@ -38,7 +38,7 @@
 :global DNSRemoteRequests true
 :global IPv6Disabler true
 :global DisableBTest true
-:global DisablePSUCL true
+:global DisableUCL true
 :global DisableND true
 :global SourceValidationAndSYNCookies false
 :global VPNServers true
@@ -125,9 +125,7 @@
 # Disable Proxy Socks Upnp Cloud LCD
 # =======================================================
 {
-:if ($DisablePSUCL) do={
-  /ip proxy set enabled=no
-  /ip socks set enabled=no
+:if ($DisableUCL) do={
   /ip upnp set enabled=no
   /ip cloud set ddns-enabled=no update-time=no
   /lcd set enabled=no
@@ -170,6 +168,8 @@
 /interface sstp-server set disabled=yes;
 /interface ovpn-server set disabled=yes;
 /interface pppoe-server set disabled=yes [find];
+/ip proxy set enabled=no
+/ip socks set enabled=no
 }
 }
 # =======================================================
