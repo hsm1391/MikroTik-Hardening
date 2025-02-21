@@ -107,7 +107,7 @@ Turn off unused physical and virtual interfaces to prevent unauthorized access.
 
 ### Disable VPN Servers
 
-Disable unused VPN servers (e.g., API, IPsec, PPP) to minimize exposure.
+Disable unused VPN servers to minimize exposure.
 
 ```bash
 /interface pptp-server server set enabled=no;
