@@ -11,6 +11,7 @@ __You can use the automated script to apply all changes, edit predefined values 
 1. [Introduction](#introduction)
 2. [Best Practices](#best-practices)
    - [Update RouterOS](#update-routeros)
+   - [Create Interface List](#create-interface-list)
    - [Change Default Credentials](#change-default-credentials)
    - [Disable Unused Services](#disable-unused-services)
    - [Secure Winbox Access](#secure-winbox-access)
@@ -45,6 +46,18 @@ When device booted make sure to update the firmware with this command
 ```bash
 /system routerboard upgrade;
 /system reboot;
+```
+
+---
+
+### Create Interface List
+Create WAN and LAN interface lists to be used in firewall rules and other configurations throughout this guide. Ensure that the relevant interfaces are added to the appropriate lists.
+
+```bash
+/interface list add name=LAN
+/interface list add name=WAN
+/interface list member add disabled=no list=LAN interface=YourLanInterface
+/interface list member add disabled=no list=WAN interface=YourWanInterface
 ```
 
 ---

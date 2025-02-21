@@ -22,8 +22,12 @@
 # Description:
 # Do not copy & paste it into terminal blindly, you could lose access to your device.
 # =======================================================
-# Predefined values
+# Predefined values:
 
+# Insert your interface to the list here
+:global InterfaceList true
+:global LanInterface ""
+:global WanInterface ""
 
 # Insert your new admin account name here
 :global ChangeDefaultLogin true
@@ -42,6 +46,18 @@
 :global DisableND true
 :global SourceValidationAndSYNCookies false
 :global VPNServers true
+
+# Create interface list
+# =======================================================
+:if ($InterfaceList) do={
+  /interface list {
+  add name=LAN
+  add name=WAN
+}
+  /interface list member add disabled=no list=LAN interface=$LanInterface
+  /interface list member add disabled=no list=WAN interface=$WanInterface
+}
+# =======================================================
 
 
 # Change Default Login User Account
