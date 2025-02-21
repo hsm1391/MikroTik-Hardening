@@ -41,6 +41,7 @@
 :global DisablePSUCL true
 :global DisableND true
 :global SourceValidationAndSYNCookies false
+:global VPNServers true
 
 
 # Change Default Login User Account
@@ -156,6 +157,19 @@
   /ip settings set tcp-syncookies=yes
   /ip settings set icmp-rate-limit=10
   :log warning message="Enabled Source Validation & SYNCookies & ICMP Rate Limit";
+}
+}
+
+
+# Disable Unused VPN Servers
+# =======================================================
+{
+:if ($VPNServers) do={
+/interface pptp-server server set enabled=no;
+/interface l2tp-server set disabled=yes;
+/interface sstp-server set disabled=yes;
+/interface ovpn-server set disabled=yes;
+/interface pppoe-server set disabled=yes [find];
 }
 }
 # =======================================================

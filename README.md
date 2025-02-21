@@ -109,11 +109,19 @@ Turn off unused physical and virtual interfaces to prevent unauthorized access.
 
 Disable unused VPN servers (e.g., API, IPsec, PPP) to minimize exposure.
 
+```bash
+/interface pptp-server server set enabled=no;
+/interface l2tp-server set disabled=yes;
+/interface sstp-server set disabled=yes;
+/interface ovpn-server set disabled=yes;
+/interface pppoe-server set disabled=yes [find];
+```
+
 ---
 
 ### Enable MAC Address Filtering
 
-Restrict network access to known MAC addresses for added security.
+Restrict Wireless network access to known MAC addresses for added security.
  
 ---
 
