@@ -14,9 +14,7 @@ This document provides a comprehensive set of best practices to secure your Mikr
    - [Enable Firewall](#enable-firewall)
    - [Use Strong Encryption](#use-strong-encryption)
    - [Disable Unused Interfaces](#disable-unused-interfaces)
-   - [Enable Logging](#enable-logging)
-   - [Restrict Management Access](#restrict-management-access)
-   - [Disable IP Services](#disable-ip-services)
+   - [Disable VPN Servers](#disable-vpn-servers)
    - [Enable MAC Address Filtering](#enable-mac-address-filtering)
    - [Disable UPnP](#disable-upnp)
    - [Regular Backups](#regular-backups)
@@ -69,7 +67,7 @@ Turn off unnecessary services (e.g., FTP, Telnet, Winbox, API) and change defaul
   set ftp disabled=yes
   set ssh disabled=yes
   set telnet disabled=yes
-  set winbox disabled=no port=YourWinboxPort
+  set winbox disabled=no
   set www disabled=yes
   set www-ssl disabled=yes
 ```
@@ -107,21 +105,9 @@ Turn off unused physical and virtual interfaces to prevent unauthorized access.
 
 ---
 
-### Enable Logging
+### Disable VPN Servers
 
-Set up logging to monitor and audit system activity, including firewall drops and login attempts.
-
----
-
-### Restrict Management Access
-
-Allow management access (Winbox, SSH, WebFig) only from trusted IP addresses or networks.
-
----
-
-### Disable IP Services
-
-Disable unused IP services (e.g., API, IPsec, PPP) to minimize exposure.
+Disable unused VPN servers (e.g., API, IPsec, PPP) to minimize exposure.
 
 ---
 
