@@ -46,16 +46,17 @@
 :global DisableND true
 :global SourceValidationAndSYNCookies false
 :global VPNServers true
+:global MacServer false
 
 # Create interface list
 # =======================================================
 :if ($InterfaceList) do={
   /interface list {
-  add name=LAN
-  add name=WAN
+  add name=LAN;
+  add name=WAN;
 }
-  /interface list member add disabled=no list=LAN interface=$LanInterface
-  /interface list member add disabled=no list=WAN interface=$WanInterface
+  /interface list member add disabled=no list=LAN interface=$LanInterface;
+  /interface list member add disabled=no list=WAN interface=$WanInterface;
 }
 # =======================================================
 
@@ -65,19 +66,19 @@
 {
 :if ($ChangeDefaultLogin) do={
   :if ( [/user find where name=$NewAccount] ) do={
-    /user set [find name=$NewAccount] password=$NewPassword
-    :log warning "New Account Already Exist, Password Changed."
+    /user set [find name=$NewAccount] password=$NewPassword;
+    :log warning "New Account Already Exist, Password Changed.";
   } else={
-    /user add name=$NewAccount password=$NewPassword disabled=no group=full
-    /user set [find name=$NewAccount] password=$NewPassword
-    :log warning "New Account Was Not Found, Created One."
+    /user add name=$NewAccount password=$NewPassword disabled=no group=full;
+    /user set [find name=$NewAccount] password=$NewPassword;
+    :log warning "New Account Was Not Found, Created One.";
   }
 
   :if ( [/user find where name=admin] ) do={
-    /user remove [find name=admin]
-    :log warning "Default Login User Terminated."
+    /user remove [find name=admin];
+    :log warning "Default Login User Terminated.";
   } 
-	:log warning message="Default Login Account Secured."
+	:log warning message="Default Login Account Secured.";
 }
 }
 # =======================================================
@@ -97,7 +98,7 @@
   set www address="" disabled=yes port=80
   set www-ssl address="" disabled=yes port=443
 
-  :log warning message="Management Services Secured"
+  :log warning message="Management Services Secured";
 }
 }
 # =======================================================
@@ -107,8 +108,8 @@
 # =======================================================
 {
 :if ($DNSRemoteRequests) do={
-  /ip dns set servers=8.8.8.8,8.8.4.4 allow-remote-requests=no
-  :log warning message="DNS Remote Request Disabled And Basic DNS Set."
+  /ip dns set servers=8.8.8.8,8.8.4.4 allow-remote-requests=no;
+  :log warning message="DNS Remote Request Disabled And Basic DNS Set.";
 }
 }
 # =======================================================
@@ -118,10 +119,10 @@
 # =======================================================
 {
 :if ($IPv6Disabler) do={
-  /ipv6 settings set forward=no
-  /ipv6/settings/set disable-ipv6=yes
-  /ipv6 nd set [find] disabled=yes
-  :log warning message="IPv6 Disabled."
+  /ipv6 settings set forward=no;
+  /ipv6/settings/set disable-ipv6=yes;
+  /ipv6 nd set [find] disabled=yes;
+  :log warning message="IPv6 Disabled.";
 }
 }
 # =======================================================
@@ -131,8 +132,8 @@
 # =======================================================
 {
 :if ($DisableBTest) do={
-  /tool bandwidth-server set enabled=no
-  :log warning message="Bandwidth-server Disabled."
+  /tool bandwidth-server set enabled=no;
+  :log warning message="Bandwidth-server Disabled.";
 }
 }
 # =======================================================
@@ -142,10 +143,10 @@
 # =======================================================
 {
 :if ($DisableUCL) do={
-  /ip upnp set enabled=no
-  /ip cloud set ddns-enabled=no update-time=no
-  /lcd set enabled=no
-  :log warning message="Disabled Proxy Socks Upnp Cloud LCD."
+  /ip upnp set enabled=no;
+  /ip cloud set ddns-enabled=no update-time=no;
+  /lcd set enabled=no;
+  :log warning message="Disabled Upnp Cloud LCD.";
 }
 }
 # =======================================================
@@ -155,9 +156,9 @@
 # =======================================================
 {
 :if ($DisableND) do={
-  /ip neighbor discovery-settings set discover-interface-list=!WAN
-  /ip neighbor/discovery-settings/set mode=rx-only
-  :log warning message="ND Disabled On WAN."
+  /ip neighbor discovery-settings set discover-interface-list=!WAN;
+  /ip neighbor/discovery-settings/set mode=rx-only;
+  :log warning message="ND Disabled On WAN.";
 }
 }
 # =======================================================
@@ -167,9 +168,9 @@
 # =======================================================
 {
 :if ($SourceValidationAndSYNCookies) do={
-  /ip settings set rp-filter=loose
-  /ip settings set tcp-syncookies=yes
-  /ip settings set icmp-rate-limit=10
+  /ip settings set rp-filter=loose;
+  /ip settings set tcp-syncookies=yes;
+  /ip settings set icmp-rate-limit=10;
   :log warning message="Enabled Source Validation & SYNCookies & ICMP Rate Limit";
 }
 }
@@ -184,9 +185,23 @@
 /interface sstp-server set disabled=yes;
 /interface ovpn-server set disabled=yes;
 /interface pppoe-server set disabled=yes [find];
-/ip proxy set enabled=no
-/ip socks set enabled=no
-/ip ssh set forwarding-enabled=no
+/ip proxy set enabled=no;
+/ip socks set enabled=no;
+/ip ssh set forwarding-enabled=no;
+:log warning message="Disabled VPN Servers";
+}
+}
+# =======================================================
+
+
+# Disable MAC Server From WAN
+# =======================================================
+{
+:if ($MacServer) do={
+/tool mac-server set allowed-interface-list=LAN;
+/tool mac-server mac-winbox set allowed-interface-list=LAN;
+/tool mac-server ping set enabled=no;
+:log warning message="Mac Server is now only accessible through LAN";
 }
 }
 # =======================================================

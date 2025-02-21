@@ -86,7 +86,25 @@ Turn off unnecessary services (e.g., FTP, Telnet, Winbox, API) and change defaul
   set winbox disabled=no
   set www disabled=yes
   set www-ssl disabled=yes
+
+/ip dns set allow-remote-requests=no;
+/tool bandwidth-server set enabled=no;
+/ip cloud set ddns-enabled=no update-time=no;
 ```
+
+If you are not using IPV6 it's better to disable it.
+```bash
+/ipv6 settings set forward=no;
+/ipv6/settings/set disable-ipv6=yes;
+/ipv6 nd set [find] disabled=yes;
+```
+
+If you do not use neighbor discovery you should disabled it or make it only work on LAN side.
+```bash
+/ip neighbor discovery-settings set discover-interface-list=!WAN;
+/ip neighbor/discovery-settings/set mode=rx-only;
+```
+
 
 ---
 
