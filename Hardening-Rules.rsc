@@ -172,6 +172,8 @@
   /ip settings set rp-filter=loose;
   /ip settings set tcp-syncookies=yes;
   /ip settings set icmp-rate-limit=10;
+  /ip settings set send-redirects=no accept-redirects=no secure-redire cts=no accept-source-route=no;
+
   :log warning message="Enabled Source Validation & SYNCookies & ICMP Rate Limit";
 }
 }

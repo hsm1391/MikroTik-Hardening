@@ -91,6 +91,7 @@ Turn off unnecessary services (e.g., FTP, Telnet, Winbox, API) and change defaul
 /ip dns set allow-remote-requests=no;
 /tool bandwidth-server set enabled=no;
 /ip cloud set ddns-enabled=no update-time=no;
+/ip settings set send-redirects=no accept-redirects=no secure-redire cts=no accept-source-route=no;
 ```
 
 If you are not using IPV6 it's better to disable it.
